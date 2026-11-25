@@ -325,7 +325,7 @@ body { transition: background-color .4s; }
 .matrix tbody tr { transition: background-color .2s; }
 .matrix tbody tr:hover { background: var(--navy-700); }
 .matrix tr:last-child td, .matrix tr:last-child th { border-bottom: 0; }
-.yes { color: var(--ok); } .no { color: var(--crit); } .opt { color: var(--warn); }
+.yes { color: var(--ok); } .no { color: var(--crit); } .maybe { color: var(--warn); }
 
 .roadmap { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .roadmap li { padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; transition: background-color .25s; }
@@ -973,6 +973,72 @@ textarea.input { padding: 12px 14px; min-height: 96px; resize: vertical; font-fa
   .banner-art .tag { font-size: 10px; padding: 5px 8px; }
   .ticker li { font-size: 20px; padding: 0 20px; gap: 40px; }
 }
+
+/* ---------- Fundo azul tecnológico (teste, 25/11/2026) ----------
+   Só no tema padrão (azul); o tema neon continua escuro. A imagem fica fixa atrás de tudo;
+   seções que pintavam o próprio fundo ficam transparentes, cartões e painéis continuam escuros. */
+:root:not([data-theme="neon"]) body { background: #1760AE; }
+:root:not([data-theme="neon"]) body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: url("bg-tech.jpg") center / cover no-repeat; pointer-events: none; }
+:root:not([data-theme="neon"]) :is(.hero, .lockstory, .section.deep, .ticker, .footer) { background: transparent; }
+:root:not([data-theme="neon"]) .hero-grid { opacity: .35; }
+:root:not([data-theme="neon"]) .lock-pin { background: radial-gradient(55% 70% at 74% 52%, rgba(160, 230, 255, calc(.06 + var(--p, 0) * .12)), transparent 70%); }
+:root:not([data-theme="neon"]) .eyebrow { color: #B5F1FF; text-shadow: none; }
+:root:not([data-theme="neon"]) .lock-meter i { background: rgba(255, 255, 255, .35); }
+/* Ajuste de cores para o fundo azul médio (medido: branco 6,3:1; ciano neon 3,9:1; laranja 2,6:1; vermelho 2,2:1).
+   Texto fica claro; acentos sobre o fundo ficam em tons claros; botões sobre o fundo ficam escuros, com borda clara. */
+:root:not([data-theme="neon"]) { --glow: .15; }
+:root:not([data-theme="neon"]) .phase:nth-child(1) em { color: #FFCABF; text-shadow: none; }
+:root:not([data-theme="neon"]) .phase em { color: #D9F7FF; text-shadow: none; }
+:root:not([data-theme="neon"]) .phase:nth-child(3) em { color: #C9FFE0; text-shadow: none; }
+:root:not([data-theme="neon"]) .ph-n { color: #FFC9A0; }
+:root:not([data-theme="neon"]) :is(.section-head, .lock-copy, .hero) :is(h1, h2) .hl { color: #8EE6FF; text-shadow: none; }
+:root:not([data-theme="neon"]) :is(.story-step, .how-step) .n { color: #FFC9A0; }
+:root:not([data-theme="neon"]) .how-step .tag { color: #D9F7FF; }
+:root:not([data-theme="neon"]) .offer svg { stroke: #D9F7FF; }
+:root:not([data-theme="neon"]) :is(.section, .lockstory) .neon-text { color: #8EE6FF; text-shadow: none; }
+:root:not([data-theme="neon"]) .footer a:not(:has(img, svg)) { color: #D9F7FF; }
+:root:not([data-theme="neon"]) .offer .state.info { color: #D9F7FF; }
+:root:not([data-theme="neon"]) :is(.story-step, .how-step) { border-left-color: rgba(255, 255, 255, .3); }
+:root:not([data-theme="neon"]) .lockstory[data-phase] .lock-meter i:is(:nth-child(1)) { background: #FFC9A0; }
+:root:not([data-theme="neon"]) .lockstory[data-phase="1"] .lock-meter i:nth-child(-n+2), :root:not([data-theme="neon"]) .lockstory[data-phase="2"] .lock-meter i { background: #FFC9A0; }
+:root:not([data-theme="neon"]) .btn-primary:not(:is(.panel, .auth-side, .tile, dialog) .btn-primary) {
+  background: linear-gradient(180deg, #14294B, #0B1A33); color: #F4F7FC; border-color: rgba(181, 241, 255, .5);
+  box-shadow: 0 4px 0 #050D1C, 0 10px 20px -10px rgba(5, 13, 28, .75); }
+:root:not([data-theme="neon"]) .btn-primary:not(:is(.panel, .auth-side, .tile, dialog) .btn-primary) svg { color: #B5F1FF; }
+:root:not([data-theme="neon"]) .btn-primary:not(:is(.panel, .auth-side, .tile, dialog) .btn-primary):hover { border-color: #B5F1FF; box-shadow: 0 6px 0 #050D1C, 0 0 22px rgba(181, 241, 255, .35); }
+:root:not([data-theme="neon"]) .btn-primary:not(:is(.panel, .auth-side, .tile, dialog) .btn-primary):active { box-shadow: 0 1px 0 #050D1C; }
+:root:not([data-theme="neon"]) .btn-secondary:not(:is(.panel, .auth-side, .tile, dialog) .btn-secondary) { background: rgba(11, 26, 51, .32); color: #F4F7FC; border-color: rgba(244, 247, 252, .6); box-shadow: 0 4px 0 rgba(5, 13, 28, .35); }
+:root:not([data-theme="neon"]) .btn-secondary:not(:is(.panel, .auth-side, .tile, dialog) .btn-secondary):hover { color: #FFFFFF; border-color: #FFFFFF; box-shadow: 0 6px 0 rgba(5, 13, 28, .4), 0 0 18px rgba(255, 255, 255, .25); }
+:root:not([data-theme="neon"]) { --text-muted: #D6E4F5; }
+:root:not([data-theme="neon"]) :is(.hero h1 .hl, .section-head h2 .hl) { color: #B5F1FF; }
+
+/* ---------- Modo escuro (neon) com fundo escuro tecnológico (25/11/2026) ----------
+   Fundo fixo atrás de tudo, seções transparentes, neon mais vivo, letras e botões mais claros. */
+:root[data-theme="neon"] {
+  --text: #F5FAFF; --text-muted: #B6C8E0; --line: #1E3A60;
+  --primary: #33E9FF; --primary-rgb: 51, 233, 255; --primary-ink: #021018; --primary-deep: #0098BF;
+  --neon: #3DF5FF; --neon-rgb: 61, 245, 255; --glow: 1;
+}
+:root[data-theme="neon"] body { background: #03060D; }
+:root[data-theme="neon"] body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: url("bg-tech-dark.jpg") center / cover no-repeat; pointer-events: none; }
+:root[data-theme="neon"] :is(.hero, .lockstory, .section.deep, .ticker, .footer) { background: transparent; }
+:root[data-theme="neon"] .lock-pin { background: radial-gradient(55% 70% at 74% 52%, rgba(var(--neon-rgb), calc(.05 + var(--p, 0) * .12)), transparent 70%); }
+:root[data-theme="neon"] .cta-band { background: rgba(6, 12, 28, .72); border-top: 1px solid rgba(var(--neon-rgb), .25); border-bottom-color: rgba(var(--neon-rgb), .25); }
+:root[data-theme="neon"] .eyebrow { color: #7CFAFF; text-shadow: 0 0 12px rgba(var(--neon-rgb), .6); }
+:root[data-theme="neon"] .neon-text, :root[data-theme="neon"] h1 .hl, :root[data-theme="neon"] h2 .hl { color: #5CF8FF; text-shadow: 0 0 18px rgba(var(--neon-rgb), .55), 0 0 42px rgba(var(--neon-rgb), .25); }
+:root[data-theme="neon"] .phase em { color: #5CF8FF; text-shadow: 0 0 20px rgba(var(--neon-rgb), .6); }
+:root[data-theme="neon"] .phase:nth-child(1) em { color: #FF7A7A; text-shadow: 0 0 20px rgba(255, 90, 90, .55); }
+:root[data-theme="neon"] .phase:nth-child(3) em { color: #5CFFB0; text-shadow: 0 0 20px rgba(61, 255, 160, .5); }
+:root[data-theme="neon"] :is(.story-step, .how-step) .n, :root[data-theme="neon"] .ph-n { color: #FF9A4D; text-shadow: 0 0 16px rgba(255, 122, 26, .45); }
+:root[data-theme="neon"] .offer svg { stroke: #5CF8FF; filter: drop-shadow(0 0 6px rgba(var(--neon-rgb), .55)); }
+:root[data-theme="neon"] .nav-links a { color: #DCEBFF; }
+:root[data-theme="neon"] .nav-links a[aria-current], :root[data-theme="neon"] .nav-links a:hover { color: #FFFFFF; text-shadow: 0 0 10px rgba(var(--neon-rgb), .6); }
+:root[data-theme="neon"] .btn-primary { background: linear-gradient(180deg, #9AFBFF, #33E9FF 55%, #12D4F2); color: #021018; border-color: rgba(220, 255, 255, .7); box-shadow: 0 4px 0 #0088AA, 0 0 22px rgba(var(--neon-rgb), .55), 0 0 60px -10px rgba(var(--neon-rgb), .45), 0 0 0 1px rgba(255, 255, 255, .35) inset; }
+:root[data-theme="neon"] .btn-primary:hover { box-shadow: 0 6px 0 #0088AA, 0 0 30px rgba(var(--neon-rgb), .8), 0 0 80px -10px rgba(var(--neon-rgb), .6), 0 0 0 1px rgba(255, 255, 255, .45) inset; }
+:root[data-theme="neon"] .btn-secondary { background: rgba(var(--neon-rgb), .08); color: #E8FDFF; border-color: rgba(var(--neon-rgb), .85); box-shadow: 0 4px 0 rgba(var(--neon-rgb), .25), 0 0 16px rgba(var(--neon-rgb), .3), inset 0 0 14px rgba(var(--neon-rgb), .12); }
+:root[data-theme="neon"] .btn-secondary:hover { color: #FFFFFF; border-color: #9AFBFF; box-shadow: 0 6px 0 rgba(var(--neon-rgb), .3), 0 0 28px rgba(var(--neon-rgb), .6), inset 0 0 18px rgba(var(--neon-rgb), .2); }
+:root[data-theme="neon"] .footer a:not(:has(img, svg)) { color: #7CFAFF; }
+:root[data-theme="neon"] :is(.window, .panel) { box-shadow: 0 0 0 1px rgba(var(--neon-rgb), .2), 0 0 40px -12px rgba(var(--neon-rgb), .35), 0 30px 80px -40px rgba(0, 0, 0, .8); }
 </style>
 </head>
 <body>
@@ -1709,7 +1775,7 @@ textarea.input { padding: 12px 14px; min-height: 96px; resize: vertical; font-fa
             <tbody>
               <tr><th scope="row">Nota final</th><td class="yes">Vê</td><td class="yes">Vê</td><td class="no">Não vê</td></tr>
               <tr><th scope="row">Respostas</th><td class="yes">Vê</td><td class="yes">Vê</td><td class="no">Não vê</td></tr>
-              <tr><th scope="row">Certificado</th><td class="yes">Vê</td><td class="yes">Vê</td><td class="opt">Se você compartilhar</td></tr>
+              <tr><th scope="row">Certificado</th><td class="yes">Vê</td><td class="yes">Vê</td><td class="maybe">Se você compartilhar</td></tr>
               <tr><th scope="row">Senha</th><td class="yes">Só você</td><td class="no">Não vê</td><td class="no">Não vê</td></tr>
             </tbody>
           </table>
